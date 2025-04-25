@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Register</title>
+</head>
+<body>
+    <h1>List of my students</h1>
+    <div id="container">
+        
+        
+    </div>
+
+    <div id="jss1-container">
+        <h2>JSS 1 Students</h2>
+    </div>
+
+    <div id="jss2-container">
+        <h2>JSS 2 Students</h2>
+    </div>
+
+    <div id="jss3-container">
+        <h2>JSS 3 Students</h2>
+    </div>
+
+   
+    <!--student grades-->
+    <div>
+        <h2>Student grades</h2>
+        <h3>students with grade A</h3>
+        <div id="gradeA">
+        
+        </div>
+        <h3>students with grade B</h3>
+        <div id="gradeB">
+    
+        </div>
+        <h3>students with grade C</h3>
+        <div id="gradeC">
+    
+        </div>
+        <h3>students with grade D</h3>
+        <div id="gradeD">
+    
+        </div>
+        <h3>students with grade F</h3>
+        <div id="gradeF">
+    
+        </div>
+    </div>
+
+<script>
+    let studentRegister=[
+        {
+            name:'Rotnen',
+            class:"Jss 3",
+            score:40,
+        },
+        {
+            name:'Ayuba',
+            class:"Jss 2",
+            score:70,
+        },
+        {
+            name:'Rita',
+            class:"Jss 1",
+            score:50, 
+        },
+        {
+            name:'jerry',
+            class:"Jss 3",
+            score:38, 
+        },
+        {
+            name:'hannah',
+            class:"Jss 1",
+            score:55, 
+        },
+        {
+            name:'muplang',
+            class:"Jss 3",
+            score:90, 
+        },
+        {
+            name:'Rotkang',
+            class:"Jss 2",
+            score:60, 
+        },
+        {
+            name:'Faith',
+            class:"Jss 1",
+            score:80, 
+        },
+        {
+            name:'Jacob',
+            class:"Jss 2",
+            score:10, 
+        },
+    ]
+
+    //Accessing all students
+    let container=document.querySelector('#container')
+    let lists = "<table><tr><th>S/n</th> <th>Name</th> <th>Class</th> <th>Score</th></tr>"
+    let num=1;
+    let totalScore=0;
+     studentRegister.forEach( item => {
+        lists += `<tr><td>${num++}</td> <td>${item.name}</td> <td>${item.class}</td> <td>${item.score}</td></tr>`
+        totalScore+=item.score
+    });
+    lists += "</table> <hr>"
+    container.innerHTML=lists
+    let span=document.createElement("span")
+    span.innerHTML=`<strong>Students Total Score</strong>: ${totalScore}`
+    container.appendChild(span)
+    //Accessing each student by their class..
+    let jss1List = "<ul>";
+    let jss2List = "<ul>";
+    let jss3List = "<ul>";  
+
+    studentRegister.filter(student => {
+        if (student.class === "Jss 1") {
+            jss1List += `<li> my name is ${student.name} i am in ${student.class}</li>`;
+        } else if (student.class === "Jss 2") {
+            jss2List += `<li> my name is ${student.name} i am in ${student.class}</li>`;
+        }else if(student.class === "Jss 3"){
+            jss3List += `<li> my name is ${student.name} i am in ${student.class}</li>`;
+        }
+    });
+
+    jss1List += "</ul>";
+    jss2List += "</ul>";
+    jss3List += "</ul>";
+
+    let jss1Container = document.querySelector('#jss1-container');
+    jss1Container.innerHTML += jss1List;
+
+    let jss2Container = document.querySelector('#jss2-container');
+    jss2Container.innerHTML += jss2List;
+
+    let jss3Container = document.querySelector('#jss3-container');  
+    jss3Container.innerHTML += jss3List;
+
+
+    //accessing student base on their grades
+    let grade1 = "<p>";
+    let  grade2="<p>"; 
+    let  grade3="<p>";   
+    let  grade4="<p>";  
+    let  grade5="<p>"; 
+    studentRegister.filter(student => {
+        if (student.score >= 70 && student.score <= 100) {
+            grade1 += `<p> ${student.name} ${student.class} A</p>`;
+        } else if (student.score >= 60 && student.score <= 69) {
+            grade2 +=`<p> ${student.name} ${student.class} B</p>`;
+        } else if (student.score >= 50 && student.score <= 59) {
+            grade3 += `<p>${student.name} ${student.class} C</p>`;
+        } else if(student.score >= 40 && student.score <= 49) { 
+            grade4 += `<p>${student.name} ${student.class} D</p>`;
+        }else if(student.score >= 0 && student.score <= 39) {
+            grade5 += `<p>${student.name} ${student.class} F</p>`;
+        }
+    });
+   
+    grade1 += "</p> <br>";
+    grade2 += "</p> <br>"
+    grade3 += "</p> <br>"
+    grade4 += "</p> <br>"
+    grade5 += "</p> <br>"
+   
+    let gradeA = document.querySelector('#gradeA');
+    gradeA.innerHTML = grade1;
+   
+
+    let gradeB = document.querySelector('#gradeB');
+    gradeB.innerHTML = grade2;
+
+    let gradeC = document.querySelector('#gradeC');
+    gradeC.innerHTML = grade3;
+
+    let gradeD = document.querySelector('#gradeD');
+    gradeD.innerHTML = grade4;
+
+    let gradeF = document.querySelector('#gradeF');
+    gradeF.innerHTML = grade5;
+</script>
+    
+</body>
+</html>
