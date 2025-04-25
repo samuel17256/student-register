@@ -154,15 +154,15 @@
     let  grade5="<p>"; 
     studentRegister.filter(student => {
         if (student.score >= 70 && student.score <= 100) {
-            grade1 += `<p> ${student.name} ${student.class} A</p>`;
+            grade1 += `<p> ${student.name} ${student.class} ${student.score} A</p>`;
         } else if (student.score >= 60 && student.score <= 69) {
-            grade2 +=`<p> ${student.name} ${student.class} B</p>`;
+            grade2 +=`<p> ${student.name} ${student.class} ${student.score} B</p>`;
         } else if (student.score >= 50 && student.score <= 59) {
-            grade3 += `<p>${student.name} ${student.class} C</p>`;
+            grade3 += `<p>${student.name} ${student.class} ${student.score} C</p>`;
         } else if(student.score >= 40 && student.score <= 49) { 
-            grade4 += `<p>${student.name} ${student.class} D</p>`;
+            grade4 += `<p>${student.name} ${student.class} ${student.score} D</p>`;
         }else if(student.score >= 0 && student.score <= 39) {
-            grade5 += `<p>${student.name} ${student.class} F</p>`;
+            grade5 += `<p>${student.name} ${student.class} ${student.score} F</p>`;
         }
     });
    
